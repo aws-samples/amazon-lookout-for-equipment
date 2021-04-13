@@ -1,7 +1,9 @@
 # Amazon Lookout for Equipment Getting Started.
 Amazon Lookout for Equipment uses the data from your sensors to detect abnormal equipment behavior, so you can take action before machine failures occur and avoid unplanned downtime.
 
-**Note:** *Expect around 4 hours to run this whole set of notebooks, including 1 hour 45 minutes of training time and 1 hour of scheduled inference to get enough relevant results to analyze*
+**Note:** *Expect between 1.5 and 2.5 hours to run this whole set of notebooks, including:*
+* *Between 30 and 45 minutes of training time*
+* *1 hour of scheduled inference to get enough relevant results to analyze (you can stop after the first inference is generated after 5 minutes though)*
 
 ## Overview
 Amazon Lookout for Equipment analyzes the data from your sensors, such as pressure, flow rate, RPMs, temperature, and power to automatically train a specific ML model based on just your data, for your equipment – with no ML expertise required. Lookout for Equipment uses your unique ML model to analyze incoming sensor data in real-time and accurately identify early warning signs that could lead to machine failures. This means you can detect equipment abnormalities with speed and precision, quickly diagnose issues, take action to reduce expensive downtime, and reduce false alerts.
@@ -14,26 +16,8 @@ Once you have access to the service, login to your AWS account and navigate to t
 You need to ensure that this notebook instance has an **IAM role** which allows it to call the Amazon Lookout for Equipment APIs:
 
 1. In your **IAM console**, look for the SageMaker execution role endorsed by your notebook instance (a role with a name like `AmazonSageMaker-ExecutionRole-yyyymmddTHHMMSS`)
-2. On the `Permissions` tab click on `Add inline policy`, select `JSON` and enter the following policy:
-
-```json
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": "lookoutequipment:*",
-            "Resource": "*"
-        },
-        {
-            "Action": "iam:PassRole",
-            "Effect": "Allow",
-            "Resource": "*"
-        }
-    ]
-}
-```
-3. Click on `Review policy` and name it (e.g. **LookoutEquipmentAccess**) before clicking on `Create policy`
+2. On the `Permissions` tab, click on `Attach policies`
+3. In the Filter policies search field, look for `AmazonLookoutEquipmentFullAccess`, tick the checkbox next to it and click on `Attach policy`
 4. Browse to the `Trust relationship` tab for this role, click on the `Edit trust relationship` button and fill in the following policy. You may already have a trust relationship in place for this role, in this case, just add the **"lookoutequipment.amazonaws.com"** in the service list:
 
 ```json
@@ -45,6 +29,9 @@ You need to ensure that this notebook instance has an **IAM role** which allows 
       "Principal": {
         "Service": [
           "sagemaker.amazonaws.com",
+            
+          // ... Other services
+            
           "lookoutequipment.amazonaws.com"
         ]
       },

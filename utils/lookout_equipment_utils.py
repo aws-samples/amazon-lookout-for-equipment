@@ -625,16 +625,24 @@ class LookoutEquipmentAnalysis:
             self.labelled_ranges = eval(
                 describe_model_response['ModelMetrics']
             )['labeled_ranges']
-            self.labelled_ranges = pd.DataFrame(self.labelled_ranges)
-            self.labelled_ranges['start'] = pd.to_datetime(self.labelled_ranges['start'])
-            self.labelled_ranges['end'] = pd.to_datetime(self.labelled_ranges['end'])
+            if len(self.labelled_ranges) > 0:
+                self.labelled_ranges = pd.DataFrame(self.labelled_ranges)
+                self.labelled_ranges['start'] = pd.to_datetime(self.labelled_ranges['start'])
+                self.labelled_ranges['end'] = pd.to_datetime(self.labelled_ranges['end'])
+                
+            else:
+                self.labelled_ranges = pd.DataFrame(columns=['start', 'end'])
             
         self.predicted_ranges = eval(
             describe_model_response['ModelMetrics']
         )['predicted_ranges']
-        self.predicted_ranges = pd.DataFrame(self.predicted_ranges)
-        self.predicted_ranges['start'] = pd.to_datetime(self.predicted_ranges['start'])
-        self.predicted_ranges['end'] = pd.to_datetime(self.predicted_ranges['end'])
+        if len(self.predicted_ranges) > 0:
+            self.predicted_ranges = pd.DataFrame(self.predicted_ranges)
+            self.predicted_ranges['start'] = pd.to_datetime(self.predicted_ranges['start'])
+            self.predicted_ranges['end'] = pd.to_datetime(self.predicted_ranges['end'])
+            
+        else:
+            self.predicted_ranges = pd.DataFrame(columns=['start', 'end'])
         
     def set_time_periods(
         self, 

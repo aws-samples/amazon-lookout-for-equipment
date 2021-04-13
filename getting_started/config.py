@@ -7,9 +7,9 @@ BUCKET                   = '<<YOUR_BUCKET>>'
 # You can leave these other parameters to these
 # default values:
 
-PREFIX_TRAINING          = 'training-data/'
-PREFIX_LABEL             = 'label-data/'
-PREFIX_INFERENCE         = 'inference-data'
+PREFIX_TRAINING          = 'getting_started/training-data/'
+PREFIX_LABEL             = 'getting_started/label-data/'
+PREFIX_INFERENCE         = 'getting_started/inference-data'
 DATASET_NAME             = 'getting-started-pump'
 MODEL_NAME               = f'{DATASET_NAME}-model'
 INFERENCE_SCHEDULER_NAME = f'{DATASET_NAME}-scheduler'
