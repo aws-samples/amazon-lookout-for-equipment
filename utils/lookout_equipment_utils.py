@@ -277,7 +277,9 @@ def plot_timeseries(
     custom_grid=True,
     fig_width=18,
     prediction_titles=None,
-    shutdown_ranges_df=None
+    shutdown_ranges_df=None,
+    evaluation_color=None,
+    evaluation_alpha=0.5
 ):
     """
     This function plots a time series signal with a line plot and can combine
@@ -386,10 +388,19 @@ def plot_timeseries(
                    alpha=0.5, 
                    label=f'{tag_name} - Training', 
                    color='tab:grey')
-        ax[0].plot(data.loc[tag_split:end, 'Value'], 
-                   linewidth=0.5, 
-                   alpha=0.8, 
-                   label=f'{tag_name} - Evaluation')
+        
+        if evaluation_color is not None:
+            ax[0].plot(data.loc[tag_split:end, 'Value'], 
+                       linewidth=0.5, 
+                       alpha=evaluation_alpha,
+                       color=evaluation_color,
+                       label=f'{tag_name} - Evaluation')
+            
+        else:
+            ax[0].plot(data.loc[tag_split:end, 'Value'], 
+                       linewidth=0.5, 
+                       alpha=0.8, 
+                       label=f'{tag_name} - Evaluation')
     else:
         ax[0].plot(data['Value'], linewidth=0.5, alpha=0.8, label=tag_name)
     ax[0].set_xlim(start, end)
@@ -1312,14 +1323,26 @@ class LookoutEquipmentScheduler:
         self.create_request.update({'ClientToken': uuid.uuid4().hex})
         
         # Create the scheduler:
-        create_scheduler_response = self.client.create_inference_scheduler(
-            **self.create_request
-        )
-        
-        # Polling scheduler creation status:
-        if wait:
-            self._poll_event(create_scheduler_response['Status'], 'PENDING')
-    
+        try:
+            create_scheduler_response = self.client.create_inference_scheduler(
+                **self.create_request
+            )
+            
+            # Polling scheduler creation status:
+            if wait:
+                self._poll_event(create_scheduler_response['Status'], 'PENDING')
+            
+        except Exception as e:
+            error_code = e.response['Error']['Code']
+            
+            # If the scheduler already exists:
+            if (error_code == 'ConflictException'):
+                print(('This scheduler already exists. Try changing its name'
+                       'and retry or try to start it.'))
+                
+            else:
+                raise e
+
     def start(self, wait=True):
         """
         Start an existing inference scheduler if it exists
