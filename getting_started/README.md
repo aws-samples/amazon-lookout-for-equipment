@@ -12,11 +12,17 @@ Amazon Lookout for Equipment analyzes the data from your sensors, such as pressu
 [**Create an AWS account**](https://portal.aws.amazon.com/gp/aws/developer/registration/index.html) if you do not already have one: then you can either setup your environment manually or automatically by deploying a CloudFormation template.
 
 #### Automatic setup with CloudFormation
-You will need a working environment in which to get your data ready for Amazon Lookout for Equipment. Most of the time, the size of the timeseries dataset you have to manipulate, prevents you from using your favorite spreadsheet software locally. You will deploy a CloudFormation template that will provision an environment for your work going forward. In another browser window, login to your AWS account. Once you have done that, open the link below in a new tab to start the process of deploying the items you need via CloudFormation.
+You will need a working environment in which to get your data ready for Amazon Lookout for Equipment. Most of the time, the size of the timeseries dataset you have to manipulate, prevents you from using your favorite spreadsheet software locally. You will deploy a CloudFormation template that will provision an environment for your work going forward. In another browser window, login to your AWS account.
+
+Once you have done that, open one of the link below (depending on the region closest to you) in a new tab to start the process of deploying the items you need via CloudFormation.
 
 *Note: This material is designed to work in the regions where the service is available. Using other regions will cause issues.*
 
-[![Launch stack](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=LookoutEquipmentGettingStarted&templateURL=https://lookoutforequipment.s3.amazonaws.com/LookoutForEquipmentNotebookSetup.yaml)
+| Region | CloudFormation Stack |
+| ---    | --- |
+| **us-east-1** | [![Launch stack](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=LookoutEquipmentGettingStarted&templateURL=https://lookoutforequipmentbucket-us-east-1.s3-us-east-1.amazonaws.com/cloud-formation-templates/lookout-equipment-getting-started.yaml) |
+| **eu-west-1** | [![Launch stack](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=LookoutEquipmentGettingStarted&templateURL=https://lookoutforequipmentbucket-eu-west-1.s3-eu-west-1.amazonaws.com/cloud-formation-templates/lookout-equipment-getting-started.yaml) |
+| **ap-northeast-2** | [![Launch stack](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=LookoutEquipmentGettingStarted&templateURL=https://lookoutforequipmentbucket-ap-northeast-2.s3-ap-northeast-2.amazonaws.com/cloud-formation-templates/lookout-equipment-getting-started.yaml) |
 
 #### Cloud formation Wizard
 After you clicked on the `Launch stack` button above, you will be brought to the `Create stack` screen. Start by clicking `Next` at the bottom:
@@ -54,8 +60,9 @@ You need to ensure that this notebook instance has an **IAM role** which allows 
 
 1. In your **IAM console**, look for the SageMaker execution role endorsed by your notebook instance (a role with a name like `AmazonSageMaker-ExecutionRole-yyyymmddTHHMMSS`)
 2. On the `Permissions` tab, click on `Attach policies`
-3. In the Filter policies search field, look for `AmazonLookoutEquipmentFullAccess`, tick the checkbox next to it and click on `Attach policy`
-4. Browse to the `Trust relationship` tab for this role, click on the `Edit trust relationship` button and fill in the following policy. You may already have a trust relationship in place for this role, in this case, just add the **"lookoutequipment.amazonaws.com"** in the service list:
+3. In the Filter policies search field, look for `AmazonLookoutEquipmentFullAccess`, tick the checkbox next to it
+4. Now, in the same search field, look for `AmazonSSMFullAccess`, tick the checkbox next to it and click on `Attach policy`
+5. Browse to the `Trust relationship` tab for this role, click on the `Edit trust relationship` button and fill in the following policy. You may already have a trust relationship in place for this role, in this case, just add the **"lookoutequipment.amazonaws.com"** in the service list:
 
 ```json
 {
@@ -77,7 +84,7 @@ You need to ensure that this notebook instance has an **IAM role** which allows 
   ]
 }
 ```
-5. Click on `Update the Trust Policy`: your SageMaker notebook instance can now call the Lookout for Equipment APIs and the service will have the appropriate access to the S3 buckets where the data will be located.
+6. Click on `Update the Trust Policy`: your SageMaker notebook instance can now call the Lookout for Equipment APIs and the service will have the appropriate access to the S3 buckets where the data will be located.
 
 You can know navigate back to the Amazon SageMaker console, then to the Notebook Instances menu. Start your instance and launch either Jupyter or JupyterLab session. From there, you can launch a new terminal and clone this repository into your environment using `git clone`.
 
