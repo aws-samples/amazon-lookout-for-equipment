@@ -18,11 +18,11 @@ Once you have done that, open one of the link below (depending on the region clo
 
 *Note: This material is designed to work in the regions where the service is available. Using other regions will cause issues.*
 
-| Region | CloudFormation Stack |
-| ---    | --- |
-| **us-east-1** | [![Launch stack](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=LookoutEquipmentGettingStarted&templateURL=https://lookoutforequipmentbucket-us-east-1.s3-us-east-1.amazonaws.com/cloud-formation-templates/lookout-equipment-getting-started.yaml) |
-| **eu-west-1** | [![Launch stack](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=LookoutEquipmentGettingStarted&templateURL=https://lookoutforequipmentbucket-eu-west-1.s3-eu-west-1.amazonaws.com/cloud-formation-templates/lookout-equipment-getting-started.yaml) |
-| **ap-northeast-2** | [![Launch stack](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=LookoutEquipmentGettingStarted&templateURL=https://lookoutforequipmentbucket-ap-northeast-2.s3-ap-northeast-2.amazonaws.com/cloud-formation-templates/lookout-equipment-getting-started.yaml) |
+| Region |     | CloudFormation Stack |
+| ---    | --- | --- |
+| US East (N. Virginia) | **us-east-1** | [![Launch stack](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://us-east-1.console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=LookoutEquipmentGettingStarted&templateURL=https://lookoutforequipmentbucket-us-east-1.s3-us-east-1.amazonaws.com/cloud-formation-templates/lookout-equipment-getting-started.yaml) |
+| Europe (Ireland) | **eu-west-1** | [![Launch stack](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://eu-west-1.console.aws.amazon.com/cloudformation/home?region=eu-west-1#/stacks/new?stackName=LookoutEquipmentGettingStarted&templateURL=https://lookoutforequipmentbucket-eu-west-1.s3-eu-west-1.amazonaws.com/cloud-formation-templates/lookout-equipment-getting-started.yaml) |
+| Asia Pacific (Seoul) | **ap-northeast-2** | [![Launch stack](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://ap-northeast-2.console.aws.amazon.com/cloudformation/home?region=ap-northeast-2#/stacks/new?stackName=LookoutEquipmentGettingStarted&templateURL=https://lookoutforequipmentbucket-ap-northeast-2.s3-ap-northeast-2.amazonaws.com/cloud-formation-templates/lookout-equipment-getting-started.yaml) |
 
 #### Cloud formation Wizard
 After you clicked on the `Launch stack` button above, you will be brought to the `Create stack` screen. Start by clicking `Next` at the bottom:
