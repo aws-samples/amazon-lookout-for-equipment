@@ -16,8 +16,8 @@ content and samples that will help you better integrate the services:
 |   # This directory will be generated when you will run the the
 |   # different samples available in this repository.
 |
-├── apps/
-|   # Will contain apps showcasing how to integrate Amazon Lookout
+├── apps/ (*NEW*)
+|   # This direction contains apps showcasing how to integrate Amazon Lookout
 |   # for Equipment insights into your own applications and business
 |   # process.
 |
@@ -25,9 +25,10 @@ content and samples that will help you better integrate the services:
 |   # Technical content associated to blog posts AWS writes about
 |   # Amazon Lookout for Equipment will be hosted here.
 |
-├── getting_started/ (*NEW*)
+├── getting_started/
 |   # These notebooks can be used to follow along the getting started 
-|   # section of the documentation.
+|   # section of the documentation and will get you started with how to
+|   # prepare your data to feed them to Amazon Lookout for Equipment.
 |
 ├── integration
 |   # You will find here some code snippets and templates showcasing
@@ -67,6 +68,18 @@ In the **[getting_started](getting_started)** folder, you will learn to:
 4. Evaluate a model performance and get some diagnostics based on historical data
 5. Build an inference scheduler and post-process the predictions
 6. Clean the ressources created by Amazon Lookout for Equipment
+
+## Apps
+This folder contains apps and solution you can deploy thanks to CloudFormation
+templates to accelerate your usage of Amazon Lookout for Equipment.
+
+This folder currently contain a CloudFormation template to deploy a CloudWatch
+dashboarding suite with:
+
+* A dashboard summarizing all the models trained in your account
+* A dashboard with all the schedulers configured in your account
+* The ability to create dedicated model and scheduler dashboards
+* CloudWatch Synthetics Canaries to send dashboard snapshot to an email address
 
 ## Security
 
