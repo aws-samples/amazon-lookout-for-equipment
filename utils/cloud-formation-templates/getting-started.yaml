@@ -65,6 +65,7 @@ Resources:
     Properties:
       InstanceType: ml.t3.medium
       RoleArn: !GetAtt SageMakerIamRole.Arn
+      PlatformIdentifier: notebook-al2-v1
       NotebookInstanceName: !Join
         - "-"
         - - "lookout-equipment-getting-started"
@@ -78,8 +79,52 @@ Resources:
                   - "/"
                   - !Ref "AWS::StackId"
 
-      VolumeSizeInGB: 5
+      VolumeSizeInGB: 20
       DefaultCodeRepository: 'https://github.com/aws-samples/amazon-lookout-for-equipment.git'
+      LifecycleConfigName: !GetAtt NotebookLifecycleConfig.NotebookInstanceLifecycleConfigName
+
+  NotebookLifecycleConfig:
+    Type: 'AWS::SageMaker::NotebookInstanceLifecycleConfig'
+    Properties:
+      NotebookInstanceLifecycleConfigName: 'install-label-studio'
+      OnStart:
+        - Content:
+            Fn::Base64: !Sub |
+                  #!/bin/bash
+                  set -e
+                  #################################################
+                  ## INSTALL DEPENDENCIES AND PULL CONTAINER IMAGE
+                  #################################################
+                  
+                  echo ==INSTALLING DEPENDENCIES==
+                  /home/ec2-user/anaconda3/envs/JupyterSystemEnv/bin/pip install -U jupyter-server-proxy
+                  
+                  /usr/bin/docker pull heartexlabs/label-studio:latest
+                  #################################################
+                  ### INTEGRATE LABEL-STUDIO WITH JUPYTER
+                  #################################################
+                  echo ==UPDATING JUPYTER SERVER CONFIG==
+                  # Strip out the name of the notebook from the instance bootstrap and the region details from aws/config
+                  INSTANCE_NAME=$(grep  notebook_uri   /etc/opt/ml/sagemaker-notebook-instance-config.json| sed 's/.*(\(.*\))/\1/' | awk -F'|' '{print $1}')
+                  AWS_REGION=$(cat /home/ec2-user/.aws/config | grep region | awk '{print $NF}')
+                  
+                  
+                  cat >>/home/ec2-user/.jupyter/jupyter_notebook_config.py <<EOC
+                  c.ServerProxy.servers = {
+                    'label-studio': {
+                        'launcher_entry': {
+                              'enabled': True,
+                              'title': 'Label Studio',
+                        },
+                        'command': ['/usr/bin/docker', 'run', '-t', '-p', '{port}:8080', '-v', '/home/ec2-user/SageMaker/mydata:/label-studio/data', 'heartexlabs/label-studio:latest', 'label-studio', '--host', 'https://$INSTANCE_NAME.notebook.$AWS_REGION.sagemaker.aws/proxy/{port}'],
+                        'absolute_url': False,
+                        'timeout': 60
+                    }
+                  }
+                  EOC
+                  echo ==INSTALL SUCCESSFUL. RESTARTING JUPYTER==
+                  # RESTART THE JUPYTER SERVER
+                  systemctl restart jupyter-server
 
 Outputs:
   NotebookInstanceId:
