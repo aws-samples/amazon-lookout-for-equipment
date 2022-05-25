@@ -28,6 +28,8 @@ share/python-wheels/
 MANIFEST
 
 data/
+apps/annotation-label-studio/*.sh
+apps/annotation-label-studio/labels.csv
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
