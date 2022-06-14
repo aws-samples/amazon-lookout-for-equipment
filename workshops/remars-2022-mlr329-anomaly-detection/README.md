@@ -44,3 +44,34 @@ Open AWS console and verify the region is N. Virginia (us-east-1) in the upper r
 ![](https://static.us-east-1.prod.workshops.aws/public/f1fbbb1d-9df4-4a13-95bc-b00108a8c2c4/static/prerequisites/image23.png)
 
 Under Get Started, click on the orange button SageMaker Studio.
+
+![](https://static.us-east-1.prod.workshops.aws/public/f1fbbb1d-9df4-4a13-95bc-b00108a8c2c4/static/prerequisites/image41.png)
+
+A SageMaker Studio environment should already be provisioned. Click on Launch App > Studio (on the right side of the preprovisioned sagemakeruser username).
+
+![](https://static.us-east-1.prod.workshops.aws/public/f1fbbb1d-9df4-4a13-95bc-b00108a8c2c4/static/prerequisites/image41.png)
+
+The page can take 1 or 2 minutes to load when you access SageMaker Studio for the first time.
+
+![](https://static.us-east-1.prod.workshops.aws/public/f1fbbb1d-9df4-4a13-95bc-b00108a8c2c4/static/prerequisites/image30.png)
+
+You will be redirected to the launcher tab that looks like this: 
+
+![](https://static.us-east-1.prod.workshops.aws/public/f1fbbb1d-9df4-4a13-95bc-b00108a8c2c4/static/prerequisites/image31.png)
+
+Under Notebooks and compute resources, make sure that the Data Science SageMaker image is selected and click on Notebook - Python 3.
+
+![](https://static.us-east-1.prod.workshops.aws/public/f1fbbb1d-9df4-4a13-95bc-b00108a8c2c4/static/prerequisites/image32.png)
+
+This will open a new Untiled.ipynb notebook.  Click on the Launch Terminal in current SageMaker Image icon. The kernel must be fully started (the circle on the right next to the Share button must be empty) to be able to click on the icon.
+
+![](https://static.us-east-1.prod.workshops.aws/public/f1fbbb1d-9df4-4a13-95bc-b00108a8c2c4/static/prerequisites/image36.png)
+
+In the terminal, type the following command:
+
+'''
+git clone 
+'''
+
+Congratulations!!  Let's now start the labs!!!
+
