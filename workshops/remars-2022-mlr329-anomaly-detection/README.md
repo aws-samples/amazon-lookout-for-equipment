@@ -11,3 +11,36 @@ Go to: https://dashboard.eventengine.run/login .  You will be redirected to the 
 
 Enter the event hash you have received from your instructor.
 
+![](https://static.us-east-1.prod.workshops.aws/public/f1fbbb1d-9df4-4a13-95bc-b00108a8c2c4/static/prerequisites/image44.png)
+
+Click on Email One-Time Password (OTP).
+
+![](https://static.us-east-1.prod.workshops.aws/public/f1fbbb1d-9df4-4a13-95bc-b00108a8c2c4/static/prerequisites/image45.png)
+
+You are redirected to the following page:
+
+![](https://static.us-east-1.prod.workshops.aws/public/f1fbbb1d-9df4-4a13-95bc-b00108a8c2c4/static/prerequisites/image46.png)
+
+Enter your email address and click on Send passcode.  Next, you'll be redirected to the following page:
+
+![](https://static.us-east-1.prod.workshops.aws/public/f1fbbb1d-9df4-4a13-95bc-b00108a8c2c4/static/prerequisites/image48.png)
+
+Check your mailbox, copy-paste the one-time password and click on Sign in.  Next, you'll be redirected to the Team Dashboard. Click on AWS Console.
+
+![](https://static.us-east-1.prod.workshops.aws/public/f1fbbb1d-9df4-4a13-95bc-b00108a8c2c4/static/prerequisites/image50.png)
+
+On the next screen, click on Open AWS Console.
+
+![](https://static.us-east-1.prod.workshops.aws/public/f1fbbb1d-9df4-4a13-95bc-b00108a8c2c4/static/prerequisites/image51.png)
+
+You are then redirected to the AWS Console.
+
+## Amazon SageMaker Studio Access
+
+Amazon SageMaker Studio is a web-based, integrated development environment (IDE) for machine learning that lets you build, train, debug, deploy, and monitor your machine learning models. Studio provides all the tools you need to take your models from experimentation to production while boosting your productivity.
+
+Open AWS console and verify the region is N. Virginia (us-east-1) in the upper right corner.  Under services search for Amazon SageMaker.
+
+![](https://static.us-east-1.prod.workshops.aws/public/f1fbbb1d-9df4-4a13-95bc-b00108a8c2c4/static/prerequisites/image23.png)
+
+Under Get Started, click on the orange button SageMaker Studio.
