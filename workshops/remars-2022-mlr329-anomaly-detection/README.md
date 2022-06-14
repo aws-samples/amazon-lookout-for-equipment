@@ -69,9 +69,9 @@ This will open a new Untiled.ipynb notebook.  Click on the Launch Terminal in cu
 
 In the terminal, type the following command:
 
-'''
-git clone 
-'''
+```
+git clone https://github.com/aws-samples/amazon-lookout-for-equipment.git
+```
 
 Congratulations!!  Let's now start the labs!!!
 
