@@ -11,6 +11,10 @@ Go to: https://dashboard.eventengine.run/login .  You will be redirected to the 
 
 Enter the event hash you have received from your instructor.
 
+```
+99ce-13d3c01bc4-83
+```
+
 ![](https://static.us-east-1.prod.workshops.aws/public/f1fbbb1d-9df4-4a13-95bc-b00108a8c2c4/static/prerequisites/image44.png)
 
 Click on Email One-Time Password (OTP).
